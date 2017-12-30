@@ -1,0 +1,7 @@
+build/*
+**/*.story.js
+tests/*
+node_modules/*
+.snapguidist/*
+coverage/*
+dist/*

@@ -4,9 +4,10 @@ import debounce from 'lodash.debounce';
 import VirtualList from 'react-tiny-virtual-list';
 import { isDataObject, generateGuid } from './lib/utils';
 import isEqual from 'lodash.isequal';
-import Placeholder from './Placeholder';
+import Button from './Placeholder';
 import Filter from './Filter';
 import Option from './Option';
+import Drawer from './DropDown';
 import './Picky.scss';
 class Picky extends React.PureComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ class Picky extends React.PureComponent {
     this.allSelected = this.allSelected.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
-  componentWillMount() {
+  componentDidMount() {
     const allSelected = this.allSelected();
     this.setState({
       allSelected
@@ -238,7 +239,8 @@ class Picky extends React.PureComponent {
       }
     );
   }
-  render() {
+
+  defaultLayout() {
     const {
       placeholder,
       value,
@@ -251,6 +253,66 @@ class Picky extends React.PureComponent {
       labelKey,
       tabIndex
     } = this.props;
+    return (
+      <div>
+        <Button
+          id={`${this.state.id}__button`}
+          placeholder={placeholder}
+          value={this.isControlled() ? value : this.state.selectedValue}
+          multiple={multiple}
+          numberDisplayed={numberDisplayed}
+          valueKey={valueKey}
+          labelKey={labelKey}
+          onClick={this.toggleDropDown}
+        />
+        {this.state.open && (
+          <Drawer open={this.state.open} id={this.state.id + '__dropdown'}>
+            <div>
+              {includeFilter && (
+                <Filter
+                  onFilterChange={
+                    filterDebounce > 0
+                      ? debounce(this.onFilterChange, filterDebounce)
+                      : this.onFilterChange
+                  }
+                />
+              )}
+
+              {includeSelectAll &&
+                multiple &&
+                !this.state.filtered && (
+                  <div
+                    tabIndex={tabIndex}
+                    role="option"
+                    id={this.state.id + '-option-' + 'selectall'}
+                    data-selectall="true"
+                    aria-selected={this.state.allSelected}
+                    className={
+                      this.state.allSelected ? 'option selected' : 'option'
+                    }
+                    onClick={this.selectAll}
+                    onKeyPress={this.selectAll}
+                  >
+                    <input
+                      type="checkbox"
+                      readOnly
+                      onClick={this.selectAll}
+                      tabIndex={-1}
+                      checked={this.state.allSelected}
+                      aria-label="select all"
+                    />
+                    Select All
+                  </div>
+                )}
+              {this.renderOptions()}
+            </div>
+          </Drawer>
+        )}
+      </div>
+    );
+  }
+  render() {
+    const { tabIndex } = this.props;
     const { open } = this.state;
     let ariaOwns = '';
     if (open) {
@@ -270,67 +332,12 @@ class Picky extends React.PureComponent {
         aria-owns={ariaOwns}
         tabIndex={tabIndex}
       >
-        <button
-          id={`${this.state.id}__button`}
-          type="button"
-          className="picky__input"
-          onClick={this.toggleDropDown}
-        >
-          <Placeholder
-            placeholder={placeholder}
-            value={this.isControlled() ? value : this.state.selectedValue}
-            multiple={multiple}
-            numberDisplayed={numberDisplayed}
-            valueKey={valueKey}
-            labelKey={labelKey}
-          />
-        </button>
-        {open && (
-          <div className="picky__dropdown" id={this.state.id + '-list'}>
-            {includeFilter && (
-              <Filter
-                onFilterChange={
-                  filterDebounce > 0
-                    ? debounce(this.onFilterChange, filterDebounce)
-                    : this.onFilterChange
-                }
-              />
-            )}
-
-            {includeSelectAll &&
-              multiple &&
-              !this.state.filtered && (
-                <div
-                  tabIndex={tabIndex}
-                  role="option"
-                  id={this.state.id + '-option-' + 'selectall'}
-                  data-selectall="true"
-                  aria-selected={this.state.allSelected}
-                  className={
-                    this.state.allSelected ? 'option selected' : 'option'
-                  }
-                  onClick={this.selectAll}
-                  onKeyPress={this.selectAll}
-                >
-                  <input
-                    type="checkbox"
-                    readOnly
-                    onClick={this.selectAll}
-                    tabIndex={-1}
-                    checked={this.state.allSelected}
-                    aria-label="select all"
-                  />
-                  Select All
-                </div>
-              )}
-            {this.renderOptions()}
-          </div>
-        )}
+        {this.props.children ? null : this.defaultLayout()}
       </div>
     );
   }
 }
-
+Picky.Button = Button;
 Picky.defaultProps = {
   numberDisplayed: 3,
   options: [],
@@ -342,6 +349,7 @@ Picky.defaultProps = {
   keepOpen: true
 };
 Picky.propTypes = {
+  children: PropTypes.element,
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.array,

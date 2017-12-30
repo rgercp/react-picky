@@ -8,7 +8,7 @@ const isEmptyValue = value =>
   value === undefined ||
   (Array.isArray(value) && !value.length);
 
-class Placeholder extends React.PureComponent {
+class Button extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -52,14 +52,25 @@ class Placeholder extends React.PureComponent {
       }
     }
 
-    return <span className="picky__placeholder">{message}</span>;
+    return (
+      <button
+        id={this.props.id}
+        type="button"
+        className="picky__input"
+        onClick={this.props.onClick}
+      >
+        <span className="picky__placeholder">{message}</span>
+      </button>
+    );
   }
 }
 
-Placeholder.defaultProps = {
+Button.defaultProps = {
   placeholder: 'None selected'
 };
-Placeholder.propTypes = {
+Button.propTypes = {
+  onClick: PropTypes.func,
+  id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.array,
@@ -73,4 +84,4 @@ Placeholder.propTypes = {
   labelKey: PropTypes.string
 };
 
-export default Placeholder;
+export default Button;
