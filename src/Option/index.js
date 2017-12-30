@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isDataObject } from './lib/utils';
+import { isDataObject } from '../lib/utils';
 const Option = props => {
   const {
     id,

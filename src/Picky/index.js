@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import VirtualList from 'react-tiny-virtual-list';
-import { isDataObject, generateGuid } from './lib/utils';
+import { isDataObject, generateGuid } from '../lib/utils';
 import isEqual from 'lodash.isequal';
-import Button from './Placeholder';
-import Filter from './Filter';
-import Option from './Option';
-import Drawer from './DropDown';
-import './Picky.scss';
+import Button from '../Button';
+import Filter from '../Filter';
+import Option from '../Option';
+import Drawer from '../DropDown';
+import '../Picky.scss';
 class Picky extends React.PureComponent {
   constructor(props) {
     super(props);

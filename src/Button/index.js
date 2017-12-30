@@ -1,7 +1,7 @@
 // NEEDS REFACTOR
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isDataObject } from './lib/utils';
+import { isDataObject } from '../lib/utils';
 
 const isEmptyValue = value =>
   value === null ||
@@ -66,7 +66,8 @@ class Button extends React.PureComponent {
 }
 
 Button.defaultProps = {
-  placeholder: 'None selected'
+  placeholder: 'None selected',
+  numberDisplayed: 3
 };
 Button.propTypes = {
   onClick: PropTypes.func,

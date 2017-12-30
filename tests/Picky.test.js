@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Placeholder from '../src/Placeholder';
+import Button from '../src/Button';
 import Picky from '../src/Picky';
 import Filter from '../src/Filter';
 
@@ -10,9 +10,9 @@ describe('Picky', () => {
     expect(wrapper.state('selectedValue')).toEqual([1, 2, 3]);
   });
 
-  it('should have Placeholder component', () => {
+  it('should have Button component', () => {
     const wrapper = mount(<Picky value={[]} />);
-    expect(wrapper.find(Placeholder)).toHaveLength(1);
+    expect(wrapper.find(Button)).toHaveLength(1);
   });
 
   it('should accept render prop', () => {
