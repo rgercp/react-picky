@@ -1,11 +1,6 @@
-'use strict';
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = require('react');
-var React__default = React['default'];
-var ReactDOM = require('react-dom');
-var ReactDOM__default = _interopDefault(ReactDOM);
+import { Component, PureComponent, createElement } from 'react';
+import React__default from 'react';
+import ReactDOM, { findDOMNode } from 'react-dom';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1363,7 +1358,7 @@ var ArrowKeyStepper = function (_React$PureComponent) {
           scrollToColumn = _getScrollState2.scrollToColumn,
           scrollToRow = _getScrollState2.scrollToRow;
 
-      return React.createElement(
+      return createElement(
         'div',
         { className: className, onKeyDown: this._onKeyDown },
         children({
@@ -1399,7 +1394,7 @@ var ArrowKeyStepper = function (_React$PureComponent) {
   }]);
 
   return ArrowKeyStepper;
-}(React.PureComponent);
+}(PureComponent);
 
 ArrowKeyStepper.defaultProps = {
   disabled: false,
@@ -1738,7 +1733,7 @@ var AutoSizer = function (_React$PureComponent) {
       }
       */
 
-      return React.createElement(
+      return createElement(
         'div',
         { ref: this._setRef, style: outerStyle },
         children(childParams)
@@ -1747,7 +1742,7 @@ var AutoSizer = function (_React$PureComponent) {
   }]);
 
   return AutoSizer;
-}(React.PureComponent);
+}(PureComponent);
 
 AutoSizer.defaultProps = {
   onResize: function onResize() {},
@@ -2053,7 +2048,7 @@ var CellMeasurer = function (_React$PureComponent) {
       var cache = this.props.cache;
 
 
-      var node = ReactDOM.findDOMNode(this);
+      var node = findDOMNode(this);
 
       // TODO Check for a bad combination of fixedWidth and missing numeric width or vice versa with height
 
@@ -2124,7 +2119,7 @@ var CellMeasurer = function (_React$PureComponent) {
   }]);
 
   return CellMeasurer;
-}(React.PureComponent);
+}(PureComponent);
 
 // Used for DEV mode warning check
 
@@ -3775,7 +3770,7 @@ var CollectionView = function (_PureComponent) {
   }]);
 
   return CollectionView;
-}(React.PureComponent);
+}(PureComponent);
 
 CollectionView.defaultProps = {
   'aria-label': 'grid',
@@ -4359,7 +4354,7 @@ var Collection$1 = function (_PureComponent) {
   }]);
 
   return Collection;
-}(React.PureComponent);
+}(PureComponent);
 
 Collection$1.defaultProps = {
   'aria-label': 'grid',
@@ -4522,7 +4517,7 @@ var ColumnSizer = function (_PureComponent) {
   }]);
 
   return ColumnSizer;
-}(React.PureComponent);
+}(PureComponent);
 
 ColumnSizer.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
@@ -6094,7 +6089,7 @@ var Grid = function (_React$PureComponent) {
 
       var showNoContentRenderer = childrenToDisplay.length === 0 && height > 0 && width > 0;
 
-      return React.createElement(
+      return createElement(
         'div',
         _extends$1({
           ref: this._setScrollingContainerRef
@@ -6107,7 +6102,7 @@ var Grid = function (_React$PureComponent) {
           role: role,
           style: _extends$1({}, gridStyle, style),
           tabIndex: tabIndex }),
-        childrenToDisplay.length > 0 && React.createElement(
+        childrenToDisplay.length > 0 && createElement(
           'div',
           {
             className: 'ReactVirtualized__Grid__innerScrollContainer',
@@ -6486,7 +6481,7 @@ var Grid = function (_React$PureComponent) {
   }]);
 
   return Grid;
-}(React.PureComponent);
+}(PureComponent);
 
 Grid.defaultProps = {
   'aria-label': 'grid',
@@ -6872,7 +6867,7 @@ var InfiniteLoader = function (_PureComponent) {
   }]);
 
   return InfiniteLoader;
-}(React.PureComponent);
+}(PureComponent);
 
 /**
  * Determines if the specified start/stop range is visible based on the most recently rendered range.
@@ -7282,7 +7277,7 @@ var List = function (_React$PureComponent) {
 
       var classNames = E__Code_dev_reactPicky_node_modules_classnames('ReactVirtualized__List', className);
 
-      return React.createElement(Grid, _extends$1({}, this.props, {
+      return createElement(Grid, _extends$1({}, this.props, {
         autoContainerWidth: true,
         cellRenderer: this._cellRenderer,
         className: classNames,
@@ -7298,7 +7293,7 @@ var List = function (_React$PureComponent) {
   }]);
 
   return List;
-}(React.PureComponent);
+}(PureComponent);
 
 List.defaultProps = {
   autoHeight: false,
@@ -8595,7 +8590,7 @@ var Masonry = function (_PureComponent) {
   }]);
 
   return Masonry;
-}(React.PureComponent);
+}(PureComponent);
 
 Masonry.defaultProps = {
   autoHeight: false,
@@ -9485,7 +9480,7 @@ var MultiGrid = function (_PureComponent) {
   }]);
 
   return MultiGrid;
-}(React.PureComponent);
+}(PureComponent);
 
 MultiGrid.defaultProps = {
   classNameBottomLeftGrid: '',
@@ -9590,7 +9585,7 @@ var ScrollSync = function (_PureComponent) {
   }]);
 
   return ScrollSync;
-}(React.PureComponent);
+}(PureComponent);
 
 ScrollSync.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
@@ -9793,7 +9788,7 @@ var Column = function (_Component) {
   }
 
   return Column;
-}(React.Component);
+}(Component);
 
 Column.defaultProps = {
   cellDataGetter: defaultCellDataGetter,
@@ -10390,7 +10385,7 @@ var Table = function (_PureComponent) {
     key: '_setScrollbarWidth',
     value: function _setScrollbarWidth() {
       if (this.Grid) {
-        var _Grid = ReactDOM.findDOMNode(this.Grid);
+        var _Grid = findDOMNode(this.Grid);
         var clientWidth = _Grid.clientWidth || 0;
         var offsetWidth = _Grid.offsetWidth || 0;
         var scrollbarWidth = offsetWidth - clientWidth;
@@ -10401,7 +10396,7 @@ var Table = function (_PureComponent) {
   }]);
 
   return Table;
-}(React.PureComponent);
+}(PureComponent);
 
 Table.defaultProps = {
   disableHeader: false,
@@ -10881,7 +10876,7 @@ var WindowScroller = function (_React$PureComponent) {
           width = _state.width;
 
 
-      var thisNode = this._child || ReactDOM__default.findDOMNode(this);
+      var thisNode = this._child || ReactDOM.findDOMNode(this);
       if (thisNode instanceof Element && scrollElement) {
         var offset = getPositionOffset(thisNode, scrollElement);
         this._positionFromTop = offset.top;
@@ -10974,7 +10969,7 @@ var WindowScroller = function (_React$PureComponent) {
   }]);
 
   return WindowScroller;
-}(React.PureComponent);
+}(PureComponent);
 
 WindowScroller.defaultProps = {
   onResize: function onResize() {},
@@ -11471,7 +11466,7 @@ var Placeholder = function Placeholder(_a) {
             }
         }
     }
-    return React.createElement("span", { className: "picky__placeholder", "data-test": "placeholder-text" }, message);
+    return createElement("span", { className: "picky__placeholder", "data-test": "placeholder-text" }, message);
 };
 Placeholder.defaultProps = {
     placeholder: 'None selected',
@@ -11481,7 +11476,7 @@ Placeholder.defaultProps = {
 };
 
 var Filter = function Filter(props) {
-    return React.createElement("div", { className: "picky__filter" }, React.createElement("input", { type: "text", className: "picky__filter__input", placeholder: "Filter...", tabIndex: props.tabIndex, "aria-label": "filter options", onChange: function onChange(event) {
+    return createElement("div", { className: "picky__filter" }, createElement("input", { type: "text", className: "picky__filter__input", placeholder: "Filter...", tabIndex: props.tabIndex, "aria-label": "filter options", onChange: function onChange(event) {
             return props.onFilterChange(event.target.value);
         } }));
 };
@@ -11503,15 +11498,15 @@ var Option = function Option(props) {
     var select = function select() {
         return selectValue(item);
     };
-    return React.createElement("div", { tabIndex: tabIndex, id: parentId + "-option-" + index, role: "option", style: style, "aria-selected": isSelected, className: cssClass, onClick: select, onKeyPress: function onKeyPress(e) {
+    return createElement("div", { tabIndex: tabIndex, id: parentId + "-option-" + index, role: "option", style: style, "aria-selected": isSelected, className: cssClass, onClick: select, onKeyPress: function onKeyPress(e) {
             e.preventDefault();
             selectValue(item);
-        } }, React.createElement("input", { type: inputType, readOnly: true, onClick: select, tabIndex: -1, checked: isSelected, "aria-label": body }), body);
+        } }, createElement("input", { type: inputType, readOnly: true, onClick: select, tabIndex: -1, checked: isSelected, "aria-label": body }), body);
 };
 
 //import './polyfills';
 var defaultRender = function defaultRender(props) {
-    return React.createElement(Option, { style: props.style, key: props.key, item: props.item, isSelected: props.isSelected, selectValue: props.selectValue, labelKey: props.labelKey, valueKey: props.valueKey, multiple: props.multiple, tabIndex: props.tabIndex, parentId: props.parentId, index: props.index });
+    return createElement(Option, { style: props.style, key: props.key, item: props.item, isSelected: props.isSelected, selectValue: props.selectValue, labelKey: props.labelKey, valueKey: props.valueKey, multiple: props.multiple, tabIndex: props.tabIndex, parentId: props.parentId, index: props.index });
 };
 var Picky$1 = /** @class */function (_super) {
     __extends(Picky, _super);
@@ -11586,7 +11581,7 @@ var Picky$1 = /** @class */function (_super) {
             return isDataObject(item, _this.props.labelKey, _this.props.valueKey) ? item[_this.props.valueKey] : item;
         };
         _this.renderVirtualList = function (items) {
-            return React.createElement(AutoSizer, null, function (_a) {
+            return createElement(AutoSizer, null, function (_a) {
                 var width = _a.width,
                     height = _a.height;
                 var actualWidth = width;
@@ -11594,7 +11589,7 @@ var Picky$1 = /** @class */function (_super) {
                 if (process.env.NODE_ENV === 'test') {
                     actualWidth = window.innerWidth;
                 }
-                return React.createElement(List, { defaultHeight: height, height: _this.props.dropdownHeight || 300, width: actualWidth, rowCount: items.length, rowHeight: _this.cellMeasurerCache.rowHeight, rowRenderer: function rowRenderer(_a) {
+                return createElement(List, { defaultHeight: height, height: _this.props.dropdownHeight || 300, width: actualWidth, rowCount: items.length, rowHeight: _this.cellMeasurerCache.rowHeight, rowRenderer: function rowRenderer(_a) {
                         var index = _a.index,
                             parent = _a.parent,
                             style = _a.style;
@@ -11614,7 +11609,7 @@ var Picky$1 = /** @class */function (_super) {
                             parentId: _this.state.id,
                             tabIndex: _this.props.tabIndex
                         };
-                        return React.createElement(CellMeasurer, { cache: _this.cellMeasurerCache, columnIndex: 0, key: key, rowIndex: index, parent: parent }, _this.props.render !== undefined ? _this.props.render(renderProps) : defaultRender(renderProps));
+                        return createElement(CellMeasurer, { cache: _this.cellMeasurerCache, columnIndex: 0, key: key, rowIndex: index, parent: parent }, _this.props.render !== undefined ? _this.props.render(renderProps) : defaultRender(renderProps));
                     } });
             });
         };
@@ -11779,15 +11774,15 @@ var Picky$1 = /** @class */function (_super) {
         if (!virtual) {
             dropdownStyle = { maxHeight: dropdownHeight, overflowY: 'scroll' };
         }
-        return React.createElement("div", { ref: function ref(node) {
+        return createElement("div", { ref: function ref(node) {
                 _this.node = node;
-            }, className: "picky", id: this.state.id, role: "combobox", "aria-controls": this.state.id + "__button", "aria-expanded": open, "aria-haspopup": open, "aria-owns": ariaOwns, tabIndex: tabIndex }, React.createElement("button", { id: this.state.id + "__button", type: "button", className: "picky__input", onClick: this.toggleDropDown }, React.createElement(Placeholder, { allSelected: this.state.allSelected, placeholder: placeholder, manySelectedPlaceholder: this.props.manySelectedPlaceholder, allSelectedPlaceholder: this.props.allSelectedPlaceholder, value: this.isControlled() ? value : this.state.selectedValue, multiple: multiple, numberDisplayed: numberDisplayed, valueKey: valueKey, labelKey: labelKey })), open && React.createElement("div", { className: "picky__dropdown", "data-test": "dropdown", id: this.state.id + '-list', style: dropdownStyle }, includeFilter && React.createElement(Filter, { onFilterChange: filterDebounce && filterDebounce > 0 ? lodash_debounce(this.onFilterChange, filterDebounce) : this.onFilterChange, tabIndex: tabIndex }), renderSelectAll && renderSelectAll({
+            }, className: "picky", id: this.state.id, role: "combobox", "aria-controls": this.state.id + "__button", "aria-expanded": open, "aria-haspopup": open, "aria-owns": ariaOwns, tabIndex: tabIndex }, createElement("button", { id: this.state.id + "__button", type: "button", className: "picky__input", onClick: this.toggleDropDown }, createElement(Placeholder, { allSelected: this.state.allSelected, placeholder: placeholder, manySelectedPlaceholder: this.props.manySelectedPlaceholder, allSelectedPlaceholder: this.props.allSelectedPlaceholder, value: this.isControlled() ? value : this.state.selectedValue, multiple: multiple, numberDisplayed: numberDisplayed, valueKey: valueKey, labelKey: labelKey })), open && createElement("div", { className: "picky__dropdown", "data-test": "dropdown", id: this.state.id + '-list', style: dropdownStyle }, includeFilter && createElement(Filter, { onFilterChange: filterDebounce && filterDebounce > 0 ? lodash_debounce(this.onFilterChange, filterDebounce) : this.onFilterChange, tabIndex: tabIndex }), renderSelectAll && renderSelectAll({
             filtered: this.state.filtered,
             allSelected: this.state.allSelected,
             toggleSelectAll: this.toggleSelectAll,
             tabIndex: tabIndex,
             multiple: multiple
-        }), !renderSelectAll && includeSelectAll && multiple && !this.state.filtered && React.createElement("div", { tabIndex: tabIndex, role: "option", id: this.state.id + '-option-' + 'selectall', "data-selectall": "true", "aria-selected": this.state.allSelected, className: this.state.allSelected ? 'option selected' : 'option', onClick: this.toggleSelectAll, onKeyPress: this.toggleSelectAll }, React.createElement("input", { type: "checkbox", readOnly: true, onClick: this.toggleSelectAll, tabIndex: -1, checked: this.state.allSelected, "aria-label": "select all" }), React.createElement("span", { "data-test": "select-all-text" }, this.props.selectAllText)), this.renderOptions()));
+        }), !renderSelectAll && includeSelectAll && multiple && !this.state.filtered && createElement("div", { tabIndex: tabIndex, role: "option", id: this.state.id + '-option-' + 'selectall', "data-selectall": "true", "aria-selected": this.state.allSelected, className: this.state.allSelected ? 'option selected' : 'option', onClick: this.toggleSelectAll, onKeyPress: this.toggleSelectAll }, createElement("input", { type: "checkbox", readOnly: true, onClick: this.toggleSelectAll, tabIndex: -1, checked: this.state.allSelected, "aria-label": "select all" }), createElement("span", { "data-test": "select-all-text" }, this.props.selectAllText)), this.renderOptions()));
     };
     Picky.defaultProps = {
         numberDisplayed: 3,
@@ -11802,6 +11797,6 @@ var Picky$1 = /** @class */function (_super) {
         selectAllText: 'Select all'
     };
     return Picky;
-}(React.Component);
+}(Component);
 
-module.exports = Picky$1;
+export default Picky$1;

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src/",
+    "outDir": "./lib/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "es2015",
+    "target": "es5",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "strict": false
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
