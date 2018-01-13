@@ -2,32 +2,6 @@ import { Component, PureComponent, createElement } from 'react';
 import React__default from 'react';
 import ReactDOM, { findDOMNode } from 'react-dom';
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 
@@ -11391,6 +11365,12 @@ function toNumber(value) {
 
 var lodash_debounce = debounce;
 
+function __extends(d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
@@ -11422,7 +11402,6 @@ var safeFormatString = function safeFormatString(placeholder, value) {
     return placeholder.indexOf('%s') > -1 ? format(placeholder, value) : placeholder;
 };
 var allSelected = function allSelected(selected, all) {
-    console.log(allSelected);
     var copiedOptions = all.slice(0);
     var copiedSelectedValue = Array.isArray(selected) ? selected.slice(0) : [];
     return isEqual(copiedOptions, copiedSelectedValue);
@@ -11439,7 +11418,6 @@ var Placeholder = function Placeholder(_a) {
         allSelectedPlaceholder = _a.allSelectedPlaceholder,
         allSelected$$1 = _a.allSelected;
     var message = '';
-    console.log(allSelectedPlaceholder);
     if (isEmptyValue(value)) {
         message = placeholder;
     } else {
@@ -11609,6 +11587,7 @@ var Picky$1 = /** @class */function (_super) {
                             parentId: _this.state.id,
                             tabIndex: _this.props.tabIndex
                         };
+                        console.log('Render: ', _this.props.render);
                         return createElement(CellMeasurer, { cache: _this.cellMeasurerCache, columnIndex: 0, key: key, rowIndex: index, parent: parent }, _this.props.render !== undefined ? _this.props.render(renderProps) : defaultRender(renderProps));
                     } });
             });
@@ -11630,6 +11609,7 @@ var Picky$1 = /** @class */function (_super) {
                     parentId: _this.state.id,
                     tabIndex: _this.props.tabIndex
                 };
+                console.log('Render: ', _this.props.render);
                 if (typeof _this.props.render === 'function') {
                     return _this.props.render(renderProps);
                 } else {
@@ -11794,7 +11774,8 @@ var Picky$1 = /** @class */function (_super) {
         tabIndex: 0,
         keepOpen: true,
         virtual: true,
-        selectAllText: 'Select all'
+        selectAllText: 'Select all',
+        render: null
     };
     return Picky;
 }(Component);

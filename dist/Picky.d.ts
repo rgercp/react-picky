@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as React from 'react';
-import { CellMeasurerCache } from 'react-virtualized';
+import { CellMeasurerCache } from 'react-virtualized/dist/es/CellMeasurer';
 import './Picky.scss';
 import { PickyProps, Value, PickyState } from './types';
 declare class Picky extends React.Component<PickyProps, PickyState> {
@@ -15,6 +15,7 @@ declare class Picky extends React.Component<PickyProps, PickyState> {
         keepOpen: boolean;
         virtual: boolean;
         selectAllText: string;
+        render: any;
     };
     cellMeasurerCache: CellMeasurerCache;
     node: HTMLDivElement | null;

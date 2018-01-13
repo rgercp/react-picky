@@ -48,7 +48,8 @@ class Picky extends React.Component<PickyProps, PickyState> {
     tabIndex: 0,
     keepOpen: true,
     virtual: true,
-    selectAllText: 'Select all'
+    selectAllText: 'Select all',
+    render: null
   };
 
   cellMeasurerCache: CellMeasurerCache;
@@ -216,6 +217,9 @@ class Picky extends React.Component<PickyProps, PickyState> {
                   parentId: this.state.id,
                   tabIndex: this.props.tabIndex
                 } as RenderProps;
+
+                console.log('Render: ', this.props.render);
+
                 return (
                   <CellMeasurer
                     cache={this.cellMeasurerCache}
@@ -254,6 +258,7 @@ class Picky extends React.Component<PickyProps, PickyState> {
         parentId: this.state.id,
         tabIndex: this.props.tabIndex
       } as RenderProps;
+      console.log('Render: ', this.props.render);
       if (typeof this.props.render === 'function') {
         return this.props.render(renderProps);
       } else {

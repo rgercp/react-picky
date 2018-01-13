@@ -12,7 +12,7 @@ export interface PlaceholderProps {
   allSelected: boolean;
 }
 
-export interface PickyProps extends PlaceholderProps {
+export interface PickyProps {
   value?: Value;
   multiple?: boolean;
   options: any[];
@@ -34,6 +34,10 @@ export interface PickyProps extends PlaceholderProps {
   onClose?(): void;
   render?(props: RenderProps): JSX.Element;
   renderSelectAll?(props: SelectAllRenderProps): void;
+  placeholder?: string;
+  numberDisplayed?: number;
+  manySelectedPlaceholder?: string;
+  allSelectedPlaceholder?: string;
 }
 
 export interface SelectAllRenderProps {
@@ -55,10 +59,10 @@ export interface RenderProps {
   item: any;
   isSelected: boolean;
   selectValue(value: Value): void;
-  labelKey: string | undefined;
-  valueKey: string | undefined;
+  labelKey?: string | undefined;
+  valueKey?: string | undefined;
   multiple: boolean;
-  tabIndex: number | undefined;
+  tabIndex?: number | undefined;
   parentId: string;
   key: any;
 }

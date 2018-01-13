@@ -19,6 +19,7 @@ const Option: React.SFC<RenderProps> = (props: RenderProps) => {
   const body = isDataObject(item as object, labelKey || '', valueKey || '')
     ? item[labelKey || '']
     : item;
+
   const inputType = multiple ? 'checkbox' : 'radio';
   const select = () => selectValue(item);
   return (

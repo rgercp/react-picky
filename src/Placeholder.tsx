@@ -19,7 +19,6 @@ const Placeholder: React.SFC<PlaceholderProps> = ({
   allSelected
 }) => {
   let message: string | undefined = '';
-  console.log(allSelectedPlaceholder);
   if (isEmptyValue(value)) {
     message = placeholder;
   } else {

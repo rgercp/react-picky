@@ -1,10 +1,10 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-import fs from 'fs';
 import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from 'rollup-plugin-typescript';
 import sass from 'rollup-plugin-sass';
 import pkg from './package.json';
+import fs from 'fs';
 
 export default {
   input: 'src/index.tsx',
@@ -25,7 +25,9 @@ export default {
         fs.writeFileSync('dist/picky.css', styles);
       }
     }),
-    typescript(),
+    typescript({
+      typescript: require('typescript')
+    }),
     resolve(),
     commonjs(),
     babel({

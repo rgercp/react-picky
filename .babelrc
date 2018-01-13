@@ -6,8 +6,11 @@
         "modules": false
       }
     ],
-    "stage-0",
     "react"
   ],
-  "plugins": ["external-helpers"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "external-helpers"
+  ]
 }

@@ -55,7 +55,6 @@ export const safeFormatString = (placeholder: string, value: string | number) =>
   placeholder.indexOf('%s') > -1 ? format(placeholder, value) : placeholder;
 
 export const allSelected = (selected: Value, all: any[]) => {
-  console.log(allSelected);
   const copiedOptions = all.slice(0);
   const copiedSelectedValue = Array.isArray(selected) ? selected.slice(0) : [];
   return isEqual(copiedOptions, copiedSelectedValue);
